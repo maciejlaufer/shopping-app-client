@@ -1,6 +1,6 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const PrivateRoute = ({ component: Component, roles, ...rest }) => (
   <Route
@@ -10,13 +10,13 @@ const PrivateRoute = ({ component: Component, roles, ...rest }) => (
       if (!currentUser.isLoggedIn) {
         return (
           <Redirect
-            to={{ pathname: "/login", state: { from: props.location } }}
+            to={{ pathname: '/login', state: { from: props.location } }}
           />
         );
       }
 
       if (roles && roles.indexOf(currentUser.role) === -1) {
-        return <Redirect to={{ pathname: "/" }} />;
+        return <Redirect to={{ pathname: '/' }} />;
       }
 
       return <Component {...props} />;

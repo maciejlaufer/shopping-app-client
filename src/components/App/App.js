@@ -1,21 +1,21 @@
-import React from "react";
-import "./App.scss";
-import { Login, Dashboard, AdminPanel } from "components";
-import { history, Roles } from "_helpers";
-import { PrivateRoute } from "components/Shared";
+import React from 'react';
+import './App.scss';
+import { Login, Dashboard, AdminPanel } from 'components';
+import { Roles } from '_helpers';
+import { PrivateRoute } from 'components/Shared';
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect
-} from "react-router-dom";
+} from 'react-router-dom';
 
 class App extends React.Component {
   render() {
     return (
       <div className="App">
         <header className="App-header"></header>
-        <Router history={history}>
+        <Router>
           <div>
             <Switch>
               <Route path="/login" component={Login} />

@@ -1,5 +1,5 @@
 // import { CHANGE_AUTH } from 'actions/types';
-import { Roles } from "_helpers";
+import { Roles } from '_helpers';
 
 const defaultState = {
   isLoggedIn: true,
