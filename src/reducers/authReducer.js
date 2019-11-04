@@ -2,7 +2,7 @@
 import { Roles } from '_helpers';
 
 const defaultState = {
-  isLoggedIn: true,
+  isLoggedIn: false,
   role: Roles.User
 };
 
