@@ -1,5 +1,5 @@
-const LOGIN_USER = 'LOGIN_USER';
+export const START_AUTH_PROCESS = 'START_AUTH_PROCESS';
 
 export default {
-  LOGIN_USER
+  START_AUTH_PROCESS
 };

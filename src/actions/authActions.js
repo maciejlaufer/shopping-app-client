@@ -1,22 +1,30 @@
 import types from 'actions/types';
 import axios from 'axios';
 
-const loginUser = value => {
+function loginUser(username, password) {
   return dispatch => {
-    dispatch(startAuthenticationProcessing());
+    dispatch(startAuthenticationProcessing(username, password));
 
-    axios
-      .post('', {})
-      .then(response => {
-        dispatch(processAuthenticationSuccess(response.data));
-      })
-      .catch(error => {
-        dispatch(processAuthenticationFailure(error.message));
-      });
+    // axios
+    //   .post('', {})
+    //   .then(response => {
+    //     dispatch(processAuthenticationSuccess(response.data));
+    //   })
+    //   .catch(error => {
+    //     dispatch(processAuthenticationFailure(error.message));
+    //   });
   };
-};
+}
 
-const startAuthenticationProcessing = () => ({});
+function startAuthenticationProcessing(username, password) {
+  return {
+    type: types.START_AUTH_PROCESS,
+    payload: {
+      username,
+      password
+    }
+  };
+}
 
 const processAuthenticationSuccess = () => ({});
 

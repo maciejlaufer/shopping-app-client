@@ -1,4 +1,4 @@
-// import { CHANGE_AUTH } from 'actions/types';
+import { START_AUTH_PROCESS } from 'actions/types';
 import { Roles } from '_helpers';
 
 const defaultState = {
@@ -8,8 +8,8 @@ const defaultState = {
 
 export default function(state = defaultState, action) {
   switch (action.type) {
-    // case CHANGE_AUTH:
-    // return action.payload;
+    case START_AUTH_PROCESS:
+      return { ...state, isLoggedIn: true };
     default:
       return state;
   }
