@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import { authActions } from 'actions';
 import { authActions } from 'actions';
 
 class Login extends React.Component {
@@ -15,6 +15,12 @@ class Login extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidUpdate() {
+    if (this.props.auth.isLoggedIn) {
+      console.log('auth', this.props.auth);
+    }
   }
 
   handleChange(event) {
@@ -33,6 +39,9 @@ class Login extends React.Component {
   }
 
   render() {
+    if (this.props.auth.isLoggedIn) {
+      return <Redirect to="/" />;
+    }
     const { username, password, submitted } = this.state;
     return (
       <div>
@@ -58,6 +67,11 @@ class Login extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    auth: state.auth
+  };
+}
 // function mapDispatchToProps(dispatch) {
 //   return {
 //     loginUser: (username, password) =>
@@ -66,6 +80,6 @@ class Login extends React.Component {
 // }
 
 export default connect(
-  null,
+  mapStateToProps,
   authActions
 )(Login);
