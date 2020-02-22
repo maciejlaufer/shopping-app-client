@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import { Login, Dashboard, AdminPanel } from 'components';
-import { Roles } from '_helpers';
+import { Roles } from 'utils/roles';
 import { PrivateRoute } from 'components/Shared';
 import {
   BrowserRouter as Router,
@@ -19,7 +19,7 @@ const App = () => (
           <Route path="/login" component={Login} />
           <PrivateRoute
             path="/admin"
-            roles={[Roles.Admin]}
+            roles={[Roles.ADMIN]}
             component={AdminPanel}
           />
           <PrivateRoute exact path="/" component={Dashboard} />

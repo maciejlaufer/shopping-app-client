@@ -1,4 +1,4 @@
-import types from 'actions/types';
+import { AuthActionTypes } from './types';
 import axios from 'axios';
 
 function loginUser(username: string, password: string) {
@@ -18,7 +18,7 @@ function loginUser(username: string, password: string) {
 
 function startAuthenticationProcessing(username: string, password: string) {
   return {
-    type: types.START_AUTH_PROCESS,
+    type: AuthActionTypes.START_AUTH_PROCESS,
     payload: {
       username,
       password

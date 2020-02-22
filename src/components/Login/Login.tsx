@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { authActions } from 'actions';
+import authActions from 'store/auth/actions';
 import { StandardInput } from 'components/Shared';
 import './Login.scss';
+import { AuthState } from 'store/auth/types';
 
 type Props = {
-  auth: any;
+  auth: AuthState;
   loginUser: (username: string, password: string) => void;
 };
 
-//TODO: refactor to use function component with hooks
 const Login: React.FC<Props> = (props: Props) => {
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
@@ -33,7 +33,7 @@ const Login: React.FC<Props> = (props: Props) => {
     }
   };
 
-  if (props.auth.isLoggedIn) {
+  if (props.auth.isAuthenticated) {
     return <Redirect to="/" />;
   }
   return (
