@@ -1,8 +1,8 @@
 import types from 'actions/types';
 import axios from 'axios';
 
-function loginUser(username, password) {
-  return dispatch => {
+function loginUser(username: string, password: string) {
+  return (dispatch: any) => {
     dispatch(startAuthenticationProcessing(username, password));
 
     // axios
@@ -16,7 +16,7 @@ function loginUser(username, password) {
   };
 }
 
-function startAuthenticationProcessing(username, password) {
+function startAuthenticationProcessing(username: string, password: string) {
   return {
     type: types.START_AUTH_PROCESS,
     payload: {

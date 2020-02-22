@@ -2,10 +2,21 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const PrivateRoute = ({ component: Component, roles, ...rest }) => (
+type Props = {
+  path: string;
+  component: React.ReactNode;
+  exact?: boolean;
+  roles?: string[];
+};
+
+const PrivateRoute: React.FC<Props> = ({
+  component: Component,
+  roles,
+  ...rest
+}: any) => (
   <Route
     {...rest}
-    render={props => {
+    render={(props: any) => {
       const currentUser = rest.auth;
       if (!currentUser.isLoggedIn) {
         return (
@@ -24,7 +35,7 @@ const PrivateRoute = ({ component: Component, roles, ...rest }) => (
   />
 );
 
-function mapStateToProps(state) {
+function mapStateToProps(state: any) {
   return { auth: state.auth };
 }
 

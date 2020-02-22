@@ -8,7 +8,8 @@ const defaultState = {
   user: null
 };
 
-export default function(state = defaultState, action) {
+//TODO: figure out way to specify action types (propably by union type)
+export default function(state = defaultState, action: any) {
   switch (action.type) {
     case START_AUTH_PROCESS:
       return { ...state, isLoggedIn: true, isLoadingUser: true };

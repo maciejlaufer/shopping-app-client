@@ -1,0 +1,22 @@
+@import '../../../assets/styles/variables';
+
+.StandardInput {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 18px;
+  box-shadow: none;
+  outline: none;
+  border-style: initial;
+  border: 1px solid $border-color;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+
+  &_text {
+    color: red;
+
+    &___active {
+      color: green;
+    }
+  }
+}
