@@ -4,6 +4,7 @@ import { authReducer } from './auth/reducer';
 import { AuthState } from './auth/types';
 import { all, fork } from 'redux-saga/effects';
 import { connectRouter, RouterState } from 'connected-react-router';
+import { authSagas } from './auth/sagas';
 
 export interface ApplicationState {
   auth: AuthState;
@@ -17,5 +18,5 @@ export const createRootReducer = (history: History) =>
   });
 
 export function* rootSaga() {
-  yield all([]);
+  yield all([fork(authSagas)]);
 }

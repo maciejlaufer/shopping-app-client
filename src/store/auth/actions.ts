@@ -1,35 +1,24 @@
-import { AuthActionTypes } from './types';
-import axios from 'axios';
+import {
+  AuthActionTypes,
+  AuthenticationRequestData,
+  StartUserAuthenticationRequest
+} from './types';
 
-function loginUser(username: string, password: string) {
-  return (dispatch: any) => {
-    dispatch(startAuthenticationProcessing(username, password));
-
-    // axios
-    //   .post('', {})
-    //   .then(response => {
-    //     dispatch(processAuthenticationSuccess(response.data));
-    //   })
-    //   .catch(error => {
-    //     dispatch(processAuthenticationFailure(error.message));
-    //   });
-  };
-}
-
-function startAuthenticationProcessing(username: string, password: string) {
-  return {
-    type: AuthActionTypes.START_AUTH_PROCESS,
-    payload: {
-      username,
-      password
-    }
-  };
-}
+const startUserAuthenticationRequest = ({
+  username,
+  password
+}: AuthenticationRequestData): StartUserAuthenticationRequest => ({
+  type: AuthActionTypes.START_USER_AUTH,
+  payload: {
+    username,
+    password
+  }
+});
 
 const processAuthenticationSuccess = () => ({});
 
 const processAuthenticationFailure = () => ({});
 
 export default {
-  loginUser
+  startUserAuthenticationRequest
 };

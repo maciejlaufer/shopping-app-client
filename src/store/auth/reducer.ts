@@ -14,7 +14,7 @@ const reducer: Reducer<AuthState> = (
   action
 ): AuthState => {
   switch (action.type) {
-    case AuthActionTypes.START_AUTH_PROCESS:
+    case AuthActionTypes.START_USER_AUTH:
       return { ...state, loading: true };
     default:
       return state;

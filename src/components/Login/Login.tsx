@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+
+import './Login.scss';
 import authActions from 'store/auth/actions';
 import { StandardInput } from 'components/Shared';
-import './Login.scss';
+
 import { AuthState } from 'store/auth/types';
+import { ApplicationState } from 'store';
 
-type Props = {
-  auth: AuthState;
-  loginUser: (username: string, password: string) => void;
-};
+const Login: React.FC = () => {
+  const dispatch = useDispatch();
 
-const Login: React.FC<Props> = (props: Props) => {
+  const authState = useSelector(
+    (state: ApplicationState): AuthState => state.auth
+  );
+
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
@@ -29,11 +33,13 @@ const Login: React.FC<Props> = (props: Props) => {
     setIsSubmitted(true);
 
     if (username && password) {
-      props.loginUser(username, password);
+      dispatch(
+        authActions.startUserAuthenticationRequest({ username, password })
+      );
     }
   };
 
-  if (props.auth.isAuthenticated) {
+  if (authState.isAuthenticated) {
     return <Redirect to="/" />;
   }
   return (
@@ -41,6 +47,7 @@ const Login: React.FC<Props> = (props: Props) => {
       <div className="login-page__wrapper">
         <div className="login-page__form-box">
           <form className="login-page__form" onSubmit={handleSubmit}>
+            {authState.loading ? 'loading' : 'not loading'}
             {username}
             <StandardInput
               type="text"
@@ -65,11 +72,11 @@ const Login: React.FC<Props> = (props: Props) => {
   );
 };
 
-function mapStateToProps(state: any) {
-  return {
-    auth: state.auth
-  };
-}
+// function mapStateToProps(state: any) {
+//   return {
+//     auth: state.auth
+//   };
+// }
 
 // function mapDispatchToProps(dispatch: any) {
 //   return {
@@ -78,4 +85,6 @@ function mapStateToProps(state: any) {
 //   };
 // }
 
-export default connect(mapStateToProps, authActions)(Login);
+// export default connect(mapStateToProps, authActions)(Login);
+
+export default Login;
