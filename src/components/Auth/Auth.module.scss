@@ -1,0 +1,15 @@
+@import '../../assets/styles/partials/variables';
+@import '../../assets/styles/partials/mixins';
+
+.AuthWrapper {
+  min-height: 100vh;
+  width: 100%;
+}
+
+@include media-md-min {
+  .AuthWrapper {
+    background: url('../../assets/images/login-background.jpg') center center
+      no-repeat;
+    background-size: cover;
+  }
+}

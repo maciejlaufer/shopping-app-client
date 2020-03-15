@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.scss';
-import { Login, Dashboard, AdminPanel } from 'components';
+import styles from './App.module.scss';
+import { Auth, Dashboard, AdminPanel } from 'components';
 import { Roles } from 'utils/roles';
 import { PrivateRoute } from 'components/Shared';
 import {
@@ -11,12 +11,12 @@ import {
 } from 'react-router-dom';
 
 const App = () => (
-  <div className="App">
+  <div className={styles.AppWrapper}>
     <header className="App-header"></header>
     <Router>
       <div>
         <Switch>
-          <Route path="/login" component={Login} />
+          <Route path="/auth" component={Auth} />
           <PrivateRoute
             path="/admin"
             roles={[Roles.ADMIN]}

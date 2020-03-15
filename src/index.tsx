@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './configureStore';
 import { App } from 'components';
-import './index.scss';
+import 'assets/styles/styles.scss';
 
 const history = createBrowserHistory();
 

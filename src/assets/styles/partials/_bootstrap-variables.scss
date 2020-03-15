@@ -1,0 +1,10 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: $b-sm,
+  md: $b-md,
+  lg: $b-lg,
+  xl: $b-xl
+);
+
+$body-bg: $body-bg-color;
+$body-color: $body-text-color;

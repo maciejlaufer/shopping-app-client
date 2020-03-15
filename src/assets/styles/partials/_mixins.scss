@@ -1,0 +1,48 @@
+// Media query mixins
+@mixin media-sm-min {
+  @media only screen and (min-width: #{$b-sm}) {
+    @content;
+  }
+}
+
+@mixin media-md-min {
+  @media only screen and (min-width: #{$b-md}) {
+    @content;
+  }
+}
+
+@mixin media-lg-min {
+  @media only screen and (min-width: #{$b-lg}) {
+    @content;
+  }
+}
+
+@mixin media-sm-max {
+  @media only screen and (max-width: #{$b-md - 1px}) {
+    @content;
+  }
+}
+
+@mixin media-md-max {
+  @media only screen and (max-width: #{$b-lg - 1px}) {
+    @content;
+  }
+}
+
+@mixin media-lg-max {
+  @media only screen and (max-width: #{$b-xl - 1px}) {
+    @content;
+  }
+}
+
+@mixin media-xs {
+  @media only screen and (max-width: #{$b-sm - 1px}) {
+    @content;
+  }
+}
+
+@mixin media-xl-min {
+  @media only screen and (min-width: #{$b-xl}) {
+    @content;
+  }
+}

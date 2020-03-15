@@ -21,7 +21,7 @@ const PrivateRoute: React.FC<Props> = ({
       if (!currentUser.isLoggedIn) {
         return (
           <Redirect
-            to={{ pathname: '/login', state: { from: props.location } }}
+            to={{ pathname: '/auth', state: { from: props.location } }}
           />
         );
       }

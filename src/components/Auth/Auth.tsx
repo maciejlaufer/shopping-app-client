@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import './Login.scss';
+import styles from './Auth.module.scss';
 import authActions from 'store/auth/actions';
 import { StandardInput } from 'components/Shared';
 
 import { AuthState } from 'store/auth/types';
 import { ApplicationState } from 'store';
 
-const Login: React.FC = () => {
+const Auth: React.FC = () => {
   const dispatch = useDispatch();
 
   const authState = useSelector(
@@ -43,18 +43,20 @@ const Login: React.FC = () => {
     return <Redirect to="/" />;
   }
   return (
-    <div className="login-page">
+    <div className={`${styles.AuthWrapper}`}>
       <div className="login-page__wrapper">
         <div className="login-page__form-box">
           <form className="login-page__form" onSubmit={handleSubmit}>
             {authState.loading ? 'loading' : 'not loading'}
             {username}
-            <StandardInput
-              type="text"
-              name="username"
-              value={username}
-              onChange={handleLoginChange}
-            />
+            <div className="mb-3 d-sm-none">
+              <StandardInput
+                type="text"
+                name="username"
+                value={username}
+                onChange={handleLoginChange}
+              />
+            </div>
             {password}
             <StandardInput
               type="password"
@@ -87,4 +89,4 @@ const Login: React.FC = () => {
 
 // export default connect(mapStateToProps, authActions)(Login);
 
-export default Login;
+export default Auth;
