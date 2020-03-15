@@ -7,18 +7,8 @@ function* handleUserAuthenticationStart() {
   try {
     const res = yield call(callApi, 'get', '/posts');
     console.log('res in sagas', res);
-    if (res.error) {
-      // fetch fail action
-    } else {
-      // put(authActons.Success)
-      // fetch success action
-    }
   } catch (error) {
-    if (error instanceof Error && error.stack) {
-      // invoke error action with err.stack
-    } else {
-      // invoke error action with unknown error
-    }
+    console.log('error', error);
   }
 }
 

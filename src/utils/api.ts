@@ -2,7 +2,7 @@
 const baseUrl = 'https://jsonplaceholder.typicode.com';
 
 export async function callApi(method: string, path: string, data?: any) {
-  const res = await fetch(`${baseUrl}/api${path}`, {
+  const res = await fetch(`${baseUrl}${path}`, {
     method,
     headers: {
       Accept: 'application/json'
@@ -10,7 +10,12 @@ export async function callApi(method: string, path: string, data?: any) {
     body: JSON.stringify(data)
   });
 
-  //TODO: try to handle all possibilities for responses
-  console.log('res', res);
-  return await res.json();
+  if (res.status >= 200 && res.status < 300) {
+    return await res.json();
+  }
+  if (res.status == 401) {
+    // logout
+  } else {
+    throw res;
+  }
 }
