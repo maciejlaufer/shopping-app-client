@@ -6,5 +6,11 @@ $grid-breakpoints: (
   xl: $b-xl
 );
 
-$body-bg: $body-bg-color;
+$theme-colors: (
+  primary: $color-primary,
+  white: $color-white
+);
+
+$body-bg: $app-bg-color;
+$link-color: $body-text-color;
 $body-color: $body-text-color;

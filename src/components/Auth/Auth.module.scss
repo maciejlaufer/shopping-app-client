@@ -1,15 +1,73 @@
 @import '../../assets/styles/partials/variables';
 @import '../../assets/styles/partials/mixins';
 
-.AuthWrapper {
-  min-height: 100vh;
-  width: 100%;
+.Auth {
+  &__Wrapper {
+    min-height: 100vh;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  &__Box {
+    background: $app-bg-color;
+    flex: 1;
+  }
+
+  &__Logo {
+    width: 12rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.Navigation {
+  &__Button {
+    padding: 1rem 1rem;
+    background-color: darken($app-bg-color, 10%);
+    transition: background-color 0.2s linear;
+
+    &:hover {
+      background-color: darken($app-bg-color, 20%);
+    }
+
+    &___Active {
+      background-color: $color-primary;
+      color: $color-white;
+
+      &:hover {
+        cursor: initial;
+        background-color: $color-primary;
+        color: $color-white;
+      }
+    }
+
+    &___Left {
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+    }
+
+    &___Right {
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+    }
+  }
 }
 
 @include media-md-min {
-  .AuthWrapper {
-    background: url('../../assets/images/login-background.jpg') center center
-      no-repeat;
-    background-size: cover;
+  .Auth {
+    &__Wrapper {
+      align-items: center;
+      background: url('../../assets/images/auth-bg.jpg') center center no-repeat;
+      background-size: cover;
+    }
+
+    &__Box {
+      width: 600px;
+      border-radius: 1rem;
+      flex: initial;
+      -webkit-box-shadow: 10px 11px 37px -9px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 10px 11px 37px -9px rgba(0, 0, 0, 0.75);
+      box-shadow: 10px 11px 37px -9px rgba(0, 0, 0, 0.75);
+    }
   }
 }
