@@ -5,8 +5,15 @@ $border-color: #ccc;
 $color-primary: #37517d;
 $color-white: #fff;
 $border-radius: 1rem;
-
 $hover-color: rgb(170, 150, 150);
+
+// Padding
+$spacer-base: 1rem;
+$p-1: $spacer-base * 0.25;
+$p-2: $spacer-base * 0.5;
+$p-3: $spacer-base;
+$p-4: $spacer-base * 1.5;
+$p-5: $spacer-base * 3;
 
 $b-sm: 576px;
 $b-md: 768px;
