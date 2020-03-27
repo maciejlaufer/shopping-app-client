@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { StandardInput } from 'components/Shared';
+import { StandardInput, StandardButton } from 'components/Shared';
 import authActions from 'store/auth/actions';
 
 interface Props {
@@ -35,24 +35,23 @@ const Login: React.FC<any> = () => {
   };
 
   return (
-    <form className="login-page__form" onSubmit={handleSubmit}>
-      {username}
+    <form className={`d-block w-100`} onSubmit={handleSubmit}>
       <StandardInput
+        className={`mb-3`}
         type="text"
         name="username"
         value={username}
+        placeholder="Login"
         onChange={handleLoginChange}
       />
-      {password}
       <StandardInput
         type="password"
         name="password"
         value={password}
+        placeholder="Password"
         onChange={handlePasswordChange}
       />
-      <button type="submit" disabled={isSubmitted}>
-        Login
-      </button>
+      <StandardButton type="button">Login</StandardButton>
     </form>
   );
 };

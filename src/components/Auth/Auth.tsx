@@ -33,14 +33,14 @@ const Auth: React.FC<Props> = ({ match, location }) => {
       className={`${styles.Auth__Wrapper} d-flex flex-column flex-fill justify-content-center`}
     >
       <div
-        className={`${styles.Auth__Box} p-5 d-flex flex-column align-items-center`}
+        className={`${styles.Auth__Box} p-md-5 d-flex flex-column align-items-center`}
       >
         <img
           className={`${styles.Auth__Logo} d-block pb-3`}
           src={logo}
           alt="App logo"
         />
-        <div className={`${styles.Navigation} w-50 pb-3`}>
+        <div className={`${styles.Navigation} pb-5`}>
           <NavLink
             className={`${styles.Navigation__Button} ${styles.Navigation__Button___Left} d-inline-block w-50 text-center`}
             activeClassName={styles.Navigation__Button___Active}
@@ -56,7 +56,7 @@ const Auth: React.FC<Props> = ({ match, location }) => {
             Register
           </NavLink>
         </div>
-        <div className="login-page__form-box">
+        <div className={`${styles.Auth__Form} w-100 px-5`}>
           <Route path={`${match.url}/login`} component={Login} />
           <Route path={`${match.url}/register`} component={Register} />
           <Route

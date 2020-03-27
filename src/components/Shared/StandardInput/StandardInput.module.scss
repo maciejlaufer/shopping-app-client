@@ -1,22 +1,17 @@
 @import 'src/assets/styles/partials/variables';
 
 .StandardInput {
-  width: 100%;
-  padding: 10px 20px;
-  border-radius: 18px;
-  box-shadow: none;
-  outline: none;
-  border-style: initial;
-  border: 1px solid $border-color;
-  font-size: 14px;
-  line-height: 16px;
-  text-align: center;
+  &__Label {
+    padding: 0 1.5rem;
+  }
 
-  &_text {
-    color: red;
-
-    &___active {
-      color: green;
-    }
+  &__Input {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    border-radius: $border-radius;
+    box-shadow: none;
+    outline: none;
+    border-style: initial;
+    border: 1px solid $border-color;
   }
 }
