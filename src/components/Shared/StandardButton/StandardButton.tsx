@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import styles from './StandardButton.module.scss';
 
 interface Props {
   type: 'button' | 'submit' | 'reset' | undefined;
@@ -6,6 +7,7 @@ interface Props {
   disabled?: boolean;
   loading?: boolean;
   children: ReactNode;
+  onClick?: Function;
 }
 
 const StandardButton: React.FC<Props> = ({
@@ -13,10 +15,16 @@ const StandardButton: React.FC<Props> = ({
   className,
   disabled,
   loading,
-  children
+  children,
+  onClick
 }) => {
   return (
-    <button className={className} type={type} disabled={disabled}>
+    <button
+      onClick={e => onClick && onClick(e)}
+      className={`${className} ${styles.Button} d-inline-block bg-primary text-white`}
+      type={type}
+      disabled={disabled}
+    >
       {loading ? 'loading...' : children}
     </button>
   );

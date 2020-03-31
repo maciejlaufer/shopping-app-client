@@ -1,0 +1,8 @@
+@import '../../../assets/styles/partials/mixins';
+@import '../../../assets/styles/partials/variables';
+
+.LoginForm {
+  &__Button {
+    width: 100%;
+  }
+}

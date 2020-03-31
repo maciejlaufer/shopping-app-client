@@ -1,0 +1,9 @@
+@import '../../../assets/styles/partials/variables';
+@import '../../../assets/styles/partials/mixins';
+
+.Button {
+  width: 100%;
+  border: none;
+  padding: 1rem 1rem;
+  border-radius: $border-radius;
+}

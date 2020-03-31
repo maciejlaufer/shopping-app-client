@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { StandardInput, StandardButton } from 'components/Shared';
 import authActions from 'store/auth/actions';
+import styles from './Login.module.scss';
 
 interface Props {
   match: any;
@@ -35,7 +36,10 @@ const Login: React.FC<any> = () => {
   };
 
   return (
-    <form className={`d-block w-100`} onSubmit={handleSubmit}>
+    <form
+      className={`${styles.LoginForm} d-block text-center w-100`}
+      onSubmit={handleSubmit}
+    >
       <StandardInput
         className={`mb-3`}
         type="text"
@@ -51,7 +55,12 @@ const Login: React.FC<any> = () => {
         placeholder="Password"
         onChange={handlePasswordChange}
       />
-      <StandardButton type="button">Login</StandardButton>
+      <StandardButton
+        className={`${styles.LoginForm__Button} mt-5`}
+        type="submit"
+      >
+        Login
+      </StandardButton>
     </form>
   );
 };
