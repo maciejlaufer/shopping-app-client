@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './StandardInput.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
 type Props = {
-  type: string;
+  typeName: string;
   name: string;
   value: string;
   position?: 'left' | 'center';
@@ -11,30 +13,48 @@ type Props = {
 };
 
 const StandardInput: React.FC<Props> = ({
-  type,
+  typeName,
   name,
   value,
   placeholder,
   position,
   className,
-  onChange
-}) => (
-  <div
-    className={`${className} ${styles.StandardInput} text-${position} w-100`}
-  >
-    <input
-      type={type}
-      name={name}
-      className={`${styles.StandardInput__Input} text-${position}`}
-      value={value}
-      placeholder={placeholder}
-      onChange={onChange}
-    />
-  </div>
-);
+  onChange,
+}) => {
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+
+  return (
+    <div
+      className={`${className} ${styles.StandardInput} text-${position} w-100 position-relative`}
+    >
+      <input
+        type={
+          typeName !== 'password'
+            ? typeName
+            : passwordVisible
+            ? 'text'
+            : 'password'
+        }
+        name={name}
+        className={`${styles.StandardInput__Input} text-${position}`}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+      />
+      <span
+        className={`${
+          name !== 'password' && name !== 'confirmPassword' && 'd-none'
+        } position-absolute ${styles.StandardInput__Icon}`}
+        onClick={() => setPasswordVisible(!passwordVisible)}
+      >
+        <FontAwesomeIcon icon={passwordVisible ? faEye : faEyeSlash} />
+      </span>
+    </div>
+  );
+};
 
 StandardInput.defaultProps = {
-  position: 'left'
+  position: 'left',
 };
 
 export default StandardInput;

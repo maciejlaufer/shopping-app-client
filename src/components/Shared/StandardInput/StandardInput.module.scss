@@ -14,4 +14,17 @@
     border-style: initial;
     border: 1px solid $border-color;
   }
+
+  &__Icon {
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+  }
 }

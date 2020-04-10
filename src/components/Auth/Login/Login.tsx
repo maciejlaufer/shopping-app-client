@@ -42,21 +42,22 @@ const Login: React.FC<any> = () => {
     >
       <StandardInput
         className={`mb-3`}
-        type="text"
+        typeName="text"
         name="username"
         value={username}
         placeholder="Login"
         onChange={handleLoginChange}
       />
       <StandardInput
-        type="password"
+        className={`mb-3`}
+        typeName="password"
         name="password"
         value={password}
         placeholder="Password"
         onChange={handlePasswordChange}
       />
       <StandardButton
-        className={`${styles.LoginForm__Button} mt-5`}
+        className={`${styles.LoginForm__Button} mt-4`}
         type="submit"
       >
         Login
