@@ -10,14 +10,14 @@ export default function configureStore(
   history: History
 ): Store<ApplicationState> {
   const composeEnhancers = composeWithDevTools({});
-  const sageMiddleware = createSagaMiddleware();
+  const sagaMiddleware = createSagaMiddleware();
 
   const store = createStore(
     createRootReducer(history),
     // default state
-    composeEnhancers(applyMiddleware(routerMiddleware(history), sageMiddleware))
+    composeEnhancers(applyMiddleware(routerMiddleware(history), sagaMiddleware))
   );
 
-  sageMiddleware.run(rootSaga);
+  sagaMiddleware.run(rootSaga);
   return store;
 }

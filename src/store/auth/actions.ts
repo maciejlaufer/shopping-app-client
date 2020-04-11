@@ -1,18 +1,18 @@
 import {
   AuthActionTypes,
   AuthenticationRequestData,
-  StartUserAuthenticationRequest
+  StartUserAuthenticationRequest,
 } from './types';
 
 const startUserAuthenticationRequest = ({
   username,
-  password
+  password,
 }: AuthenticationRequestData): StartUserAuthenticationRequest => ({
   type: AuthActionTypes.START_USER_AUTH,
   payload: {
     username,
-    password
-  }
+    password,
+  },
 });
 
 const processAuthenticationSuccess = () => ({});
@@ -20,5 +20,5 @@ const processAuthenticationSuccess = () => ({});
 const processAuthenticationFailure = () => ({});
 
 export default {
-  startUserAuthenticationRequest
+  startUserAuthenticationRequest,
 };

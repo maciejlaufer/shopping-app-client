@@ -7,7 +7,7 @@ export interface AuthState {
 }
 
 export const AuthActionTypes = {
-  START_USER_AUTH: '@@auth/START_AUTH_PROCESS'
+  START_USER_AUTH: '@@auth/START_AUTH_PROCESS',
 };
 
 export interface AuthenticationRequestData {

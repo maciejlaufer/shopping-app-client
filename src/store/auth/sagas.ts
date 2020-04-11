@@ -1,7 +1,14 @@
-import { call, takeEvery, all, fork } from 'redux-saga/effects';
+import { call, takeEvery, all, fork, put } from 'redux-saga/effects';
 import { callApi } from 'utils/api';
 
 import { AuthActionTypes } from './types';
+
+function* watchUserAuthenticationStart() {
+  yield takeEvery(
+    AuthActionTypes.START_USER_AUTH,
+    handleUserAuthenticationStart
+  );
+}
 
 function* handleUserAuthenticationStart() {
   try {
@@ -10,13 +17,6 @@ function* handleUserAuthenticationStart() {
   } catch (error) {
     console.log('error', error);
   }
-}
-
-function* watchUserAuthenticationStart() {
-  yield takeEvery(
-    AuthActionTypes.START_USER_AUTH,
-    handleUserAuthenticationStart
-  );
 }
 
 export function* authSagas() {

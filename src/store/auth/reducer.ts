@@ -6,7 +6,7 @@ export const initialState: AuthState = {
   loading: false,
   user: null,
   roles: [],
-  isAuthenticated: false
+  isAuthenticated: false,
 };
 
 const reducer: Reducer<AuthState> = (
