@@ -19,9 +19,19 @@ const Register: React.FC<Props> = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
-  const [errors, setErrors] = useState<any>({});
+  const [passwordMatchError, setPasswordMatchError] = useState<any>('');
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (registerState.errors.email) {
+      dispatch(
+        registerActions.userRegistrationError({
+          errors: {
+            ...registerState.errors,
+            email: '',
+          },
+        })
+      );
+    }
     setEmail(event.target.value);
   };
 
@@ -42,9 +52,9 @@ const Register: React.FC<Props> = () => {
     confirmPassword: string
   ): void => {
     if (password !== confirmPassword && confirmPassword) {
-      setErrors({ ...errors, confirmPassword: 'Password must match' });
+      setPasswordMatchError('Password must match');
     } else {
-      setErrors({ ...errors, confirmPassword: '' });
+      setPasswordMatchError('');
     }
   };
 
@@ -70,6 +80,11 @@ const Register: React.FC<Props> = () => {
         placeholder="Email"
         onChange={handleEmailChange}
       />
+      {
+        <div className={`text-left pl-4 mt-1 text-danger text-small`}>
+          {registerState.errors.email}
+        </div>
+      }
       <StandardInput
         className={`mt-3`}
         typeName="password"
@@ -78,6 +93,11 @@ const Register: React.FC<Props> = () => {
         placeholder="Password"
         onChange={handlePasswordChange}
       />
+      {
+        <div className={`text-left pl-4 mt-1 text-danger text-small`}>
+          {registerState.errors.password}
+        </div>
+      }
       <StandardInput
         className={`mt-3`}
         typeName="password"
@@ -86,11 +106,11 @@ const Register: React.FC<Props> = () => {
         placeholder="Confirm password"
         onChange={handleConfirmPasswordChange}
       />
-      {errors['confirmPassword'] && (
+      {
         <div className={`text-left pl-4 mt-1 text-danger text-small`}>
-          {errors['confirmPassword']}
+          {passwordMatchError}
         </div>
-      )}
+      }
       <StandardInput
         className={`mt-3`}
         typeName="text"
@@ -112,7 +132,10 @@ const Register: React.FC<Props> = () => {
         type="submit"
         loading={registerState.loading}
         disabled={
-          !email || !password || !confirmPassword || errors['confirmPassword']
+          !email ||
+          !password ||
+          !confirmPassword ||
+          passwordMatchError['confirmPassword']
         }
       >
         Register
